@@ -5,6 +5,9 @@ const page = () => {
   return (
     <>
     <Navbar/>
+    <div className="bg-red-500 ">
+      hello
+    </div>
     </>
   )
 }
