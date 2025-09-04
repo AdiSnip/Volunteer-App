@@ -64,7 +64,7 @@ const Page = () => {
           </p>
           <div className="mt-8">
             <Link
-              href="/signup"
+              href="/auth/signup"
               className="inline-block rounded-full bg-blue-600 px-6 py-2 text-base font-semibold text-white shadow-md transition-transform duration-150 hover:scale-105 hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               Get Started
