@@ -1,32 +1,28 @@
-import mongoose, { Schema, Document, Types } from 'mongoose';
-import { IUser } from './user';
+import mongoose, { Schema , Document} from "mongoose";
 
 export interface ICampaign extends Document {
-  ngo: Types.ObjectId | IUser;
-  title: string;
-  description: string;
-  image?: string;
-  startDate: Date;
-  endDate: Date;
-  location: string;
-  volunteersNeeded: number;
-  volunteers: Types.ObjectId[];
-  donationGoal?: number;
-  donationsReceived?: number;
+    title: string;
+    description: string;
+    ngo: Schema.Types.ObjectId;
+    collectedAmount: number;
+    startDate: Date;
+    endDate: Date;
+    volunteers: Schema.Types.ObjectId[];
+    createdAt: Date;
+    updatedAt: Date;
 }
 
-const CampaignSchema: Schema = new Schema({
-  ngo: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  image: { type: String },
-  startDate: { type: Date, required: true },
-  endDate: { type: Date, required: true },
-  location: { type: String, required: true },
-  volunteersNeeded: { type: Number, required: true },
-  volunteers: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  donationGoal: { type: Number, default: 0 },
-  donationsReceived: { type: Number, default: 0 }
+const campaignSchema: Schema<ICampaign> = new Schema({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    ngo: { type: Schema.Types.ObjectId, ref: 'NGO', required: true },
+    collectedAmount: { type: Number, default: 0 },
+    startDate: { type: Date, required: true },
+    endDate: { type: Date, required: true },
+    volunteers: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now }
 });
 
-export const Campaign = mongoose.models.Campaign || mongoose.model<ICampaign>('Campaign', CampaignSchema);
+const Campaign = mongoose.model<ICampaign>('Campaign', campaignSchema);
+export default Campaign;

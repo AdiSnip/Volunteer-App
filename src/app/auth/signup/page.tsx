@@ -64,7 +64,6 @@ export default function SignupPage() {
     }
 
     // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email) {
       newErrors.email = 'Email is required';
     } else if (!emailRegex.test(formData.email)) {
@@ -302,3 +301,4 @@ export default function SignupPage() {
     </div>
   );
 }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
