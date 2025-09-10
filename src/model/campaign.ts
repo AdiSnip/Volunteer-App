@@ -3,6 +3,7 @@ import mongoose, { Schema , Document} from "mongoose";
 export interface ICampaign extends Document {
     title: string;
     description: string;
+    Category?: string;
     ngo: Schema.Types.ObjectId;
     collectedAmount: number;
     startDate: Date;
@@ -15,6 +16,7 @@ export interface ICampaign extends Document {
 const campaignSchema: Schema<ICampaign> = new Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
+    Category: { type: String, enum: ['Health', 'Education', 'Environment','Other'], required: true },
     ngo: { type: Schema.Types.ObjectId, ref: 'NGO', required: true },
     collectedAmount: { type: Number, default: 0 },
     startDate: { type: Date, required: true },
